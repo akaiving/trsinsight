@@ -192,7 +192,7 @@
         height: 100svh;
         min-height: 560px;
         justify-content: flex-start;
-        padding-top: 13vh;
+        padding-top: 7vh;
       }
 
       /* No overlay — sky is bright enough for dark text */
@@ -220,7 +220,7 @@
       }
 
       .divider {
-        margin: 1.2em auto;
+        margin: 0.9em auto;
         background: rgba(27, 42, 74, 0.35);
       }
 
@@ -230,17 +230,17 @@
         text-shadow: none;
       }
 
-      /* Footer: semi-opaque white on mobile */
+      /* Footer: restore original transparency */
       .footer-bar {
         padding: 10px 18px;
-        background: rgba(255, 255, 255, 0.82);
-        border-top: 1px solid rgba(0, 0, 0, 0.08);
+        background: rgba(255, 255, 255, 0.10);
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
       }
 
       .footer-location,
       .footer-email,
       .footer-copy {
-        color: rgba(27, 42, 74, 0.85);
+        color: rgba(255, 255, 255, 0.88);
         font-size: 0.62rem;
       }
 
