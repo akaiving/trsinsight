@@ -540,6 +540,9 @@
         modal.classList.add('open');
         modal.setAttribute('aria-hidden', 'false');
         setTimeout(() => modalInput.focus(), 300);
+        if (typeof gtag === 'function') {
+          gtag('event', 'member_login_click');
+        }
       }
 
       function closeModal() {
@@ -551,10 +554,21 @@
       }
 
       function submitCode() {
-        modalGuidance.innerHTML = 'Please contact <a href="mailto:insight@trsinsight.com">insight@trsinsight.com</a> for access.';
+        modalGuidance.innerHTML = 'Please contact <a href="mailto:insight@trsinsight.com" id="modalEmailLink">insight@trsinsight.com</a> for access.';
         modalGuidance.classList.add('visible');
         modalInput.value = '';
         modalInput.focus();
+        if (typeof gtag === 'function') {
+          gtag('event', 'access_code_submit');
+        }
+        const modalEmailLink = document.getElementById('modalEmailLink');
+        if (modalEmailLink) {
+          modalEmailLink.addEventListener('click', () => {
+            if (typeof gtag === 'function') {
+              gtag('event', 'modal_email_click');
+            }
+          });
+        }
       }
 
       openLogin.addEventListener('click', openModal);
@@ -572,6 +586,15 @@
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
       });
+
+      const footerEmail = document.querySelector('.footer-email');
+      if (footerEmail) {
+        footerEmail.addEventListener('click', () => {
+          if (typeof gtag === 'function') {
+            gtag('event', 'footer_email_click');
+          }
+        });
+      }
     })();
   </script>
 
